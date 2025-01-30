@@ -39,7 +39,7 @@ const data=await  fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.
                }}>Search</button>
             </div>
             <button className='filter-btn' onClick={
-               ()=>{const filteredListOfRes=listOfRes.filter((restaurant)=>restaurant.info.avgRating>4.2);
+               ()=>{const filteredListOfRes=listOfRes.filter((restaurant)=>restaurant.info.avgRating>4.0);
                   setListOfRes(filteredListOfRes);
                }}>
                Top Rated Restaurants
