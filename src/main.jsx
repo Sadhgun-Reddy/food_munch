@@ -7,21 +7,34 @@ import Contact from './components/Contact';
 import Error from './components/Error.jsx';
 import './index.css';
 import App from './App.jsx';
+import Body from './components/Body.jsx';
+import RestaurantMenu from './components/RestaurantMenu.jsx';
 
 const appRouter = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    children:[
+      {
+        path: '/',
+        element: <Body />,
+      },
+      {
+        path: '/about',
+        element: <About />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
+      },
+      {
+        path: '/restaurants/:resId',
+        element: <RestaurantMenu />,
+      },
+    ],
     errorElement: <Error />,
   },
-  {
-    path: '/about',
-    element: <About />,
-  },
-  {
-    path: '/contact',
-    element: <Contact />,
-  },
+  
 ]);
 
 createRoot(document.getElementById('root')).render(

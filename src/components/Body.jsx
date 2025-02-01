@@ -2,6 +2,7 @@ import RestaurantCard from './RestaurantCard';
 import '../index.css'
 import {useEffect, useState} from 'react'
 import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 
 
 const Body = ()=>{
@@ -15,13 +16,13 @@ const Body = ()=>{
    },[]);
    
    const fetchData = async()=>{
-const data=await  fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.6528341&lng=83.1605913&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+   const data=await  fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=17.4937761&lng=78.4017033&carousel=true&third_party_vendor=1")
       const json = await data.json();
-      console.log(json)
+      //console.log(json)
      
-      setListOfRes(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);  
-      setFilteredListOfRes(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
-      console.log(listOfRes)
+      setListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);  
+      setFilteredListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants) 
+      //console.log(listOfRes)
    };
 
     return listOfRes.length!==0? (
@@ -46,8 +47,12 @@ const data=await  fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.
             </button>
          </div>
           <div className='res-container'> 
-             {
+             {/* {
                 filteredListOfRes?.map(restaurant=><RestaurantCard key={restaurant.info.id} resData={restaurant}/>)
+             } */}
+             {
+                filteredListOfRes?.map(restaurant=>
+                <Link key={restaurant.info.id} to={"/restaurants/" +restaurant.info.id }> <RestaurantCard  resData={restaurant}/> </Link>)
              }
           </div>
        </div>
