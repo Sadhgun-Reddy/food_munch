@@ -29,19 +29,19 @@ const Body = ()=>{
        <div className='body'>
          <div className='filter'>
             <div className='search'>
-               <input type='text' className='search-box' value={searchText} onChange={(e)=>{
+               <input type='text' className='border-2 border-black' value={searchText} onChange={(e)=>{
                   setSearchText(e.target.value);
                }}/>
                <button onClick={()=>{
-                  console.log(searchText);
+                  // console.log(searchText);
 
                   const filteredListOfRes=listOfRes.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                   setFilteredListOfRes(filteredListOfRes)
                }}>Search</button>
             </div>
             <button className='filter-btn' onClick={
-               ()=>{const filteredListOfRes=listOfRes.filter((restaurant)=>restaurant.info.avgRating>4.0);
-                  setListOfRes(filteredListOfRes);
+               ()=>{const filteredListOfRes=listOfRes.filter((res)=>res.info.avgRating>4.2);
+                  setFilteredListOfRes(filteredListOfRes);
                }}>
                Top Rated Restaurants
             </button>

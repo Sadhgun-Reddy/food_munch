@@ -33,8 +33,8 @@ const RestaurantMenu = ()=>{
 
     return (
         <div className="menu">
-            <h1>{name}</h1>
-            <h2>Menu</h2>
+            <h1 className="font-bold">{name}</h1>
+            <h2 className="font-bold">Menu</h2>
             <ul>
                 <li>{cuisines.join(',')}</li>
                 <li>{costForTwoMessage}</li>

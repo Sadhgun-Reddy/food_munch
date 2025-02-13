@@ -16,8 +16,8 @@ const Header = ()=>{
                  <li><Link to='/'>Home </Link> </li>
                  <li><Link to='/about'>About Us</Link></li>
                  <li><Link to='/contact'>Contact Us</Link></li>
-                 <li>cart</li>
-                 <button className="login" onClick={()=>{loginBtn==="Login"?setLoginBtn("Logout"):setLoginBtn("Login")}}>{loginBtn}</button>
+                 <li ><Link to='/contact' >cart</Link></li>
+                 <button className="border-2 bg-blue-500 p-2" onClick={()=>{loginBtn==="Login"?setLoginBtn("Logout"):setLoginBtn("Login")}}>{loginBtn}</button>
               </ul>
           </div>
       </div>
