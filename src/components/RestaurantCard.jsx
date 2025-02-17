@@ -9,9 +9,9 @@ const RestaurantCard = (props)=>{
 
 
    return(
-      <div className='res-card '>
-         <img alt='restaurant-image' className='res-logo' src={CDN_URL+ cloudinaryImageId}/>
-         <h3>{name}</h3>
+      <div className='m-2 p-2 w-[250px] rounded-lg bg-gray-300 hover:bg-gray-800 cursor-pointer' >
+         <img alt='restaurant-image' className='rounded-lg' src={CDN_URL+ cloudinaryImageId}/>
+         <h3 className="font-bold py-4 ">{name}</h3>
          <h4>{cuisines.join(", ")}</h4>
          <h4>{avgRating} Rating</h4>
          <p>Delivery Time: {sla?.deliveryTime} Min</p>
