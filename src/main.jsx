@@ -10,6 +10,7 @@ import App from './App.jsx';
 import Body from './components/Body.jsx';
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 
+
 const appRouter = createBrowserRouter([
   {
     path: '/',

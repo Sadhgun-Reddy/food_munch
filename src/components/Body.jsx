@@ -1,9 +1,10 @@
 import RestaurantCard from './RestaurantCard';
 import '../index.css'
-import {useEffect, useState} from 'react'
+import {useContext, useEffect, useState,userContext} from 'react'
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/UserContext';
 
 
 const Body = ()=>{
@@ -17,7 +18,7 @@ const Body = ()=>{
    },[]);
    
    const fetchData = async()=>{
-   const data=await  fetch("https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=17.4937761&lng=78.4017033&carousel=true&third_party_vendor=1")
+   const data=await  fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.38430&lng=78.45830&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
       const json = await data.json();
       //console.log(json)
      
@@ -27,11 +28,15 @@ const Body = ()=>{
    };
 
    const onlineStatus = useOnlineStatus();
+   //console.log(filteredListOfRes)
+   const {setUserName, loggedInUser}=useContext(UserContext);
+
 
    if (onlineStatus === false)
       return(
          <h1>Offline</h1>
       );
+
 
     return listOfRes.length!==0? (
        <div className='body'>
@@ -54,6 +59,14 @@ const Body = ()=>{
                   }}>
                   Top Rated Restaurants
                </button>
+            </div>
+            <div className='m-4 p-4 flex items-center'>
+               <label>UserName : </label>
+               <input
+                  className='border border-black p-2'
+                  value={loggedInUser}
+                  onChange={(e)=>setUserName(e.target.value)} 
+               />
             </div>
          </div>
           <div className='flex flex-wrap'> 
